@@ -35,8 +35,6 @@ class Pool(MPIPool):
                 sys.stdout.flush()
                 sys.stderr.flush()
                 # shutdown all mpi tasks:
-                from mpi4py import MPI
-
                 MPI.COMM_WORLD.Abort()
             # without the sys.exit below, programm execution would continue after the clients
             # 'import mpipool' instruction:
