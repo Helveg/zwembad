@@ -4,4 +4,4 @@ __credits__ = "ETH Zurich, Scientific IT Services"
 
 from .mpipool import Pool  # noqa
 
-__version__ = "0.0.1a"
+__version__ = "0.0.1a0"
