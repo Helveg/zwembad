@@ -1,11 +1,10 @@
-# Standard library
 import threading
 import concurrent.futures
 import atexit
 import sys
 import traceback
-from mpi4py import MPI
 import queue
+from mpi4py import MPI
 
 class _JobThread(threading.Thread):
     """
