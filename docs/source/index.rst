@@ -13,8 +13,8 @@ Welcome to Zwembad's documentation!
    zwembad
 
 Both the package and the docs are pretty minimalistic: You create an
-:class:`.MPIPoolExecutor` and either :func:`~.MPIPoolExecutor.submit` jobs to it or
-:func:`~.MPIPoolExecutor.map` a series of jobs to a list.
+:class:`.pool.MPIPoolExecutor` and either :meth:`~.pool.MPIPoolExecutor.submit` jobs to it
+or :meth:`~.pool.MPIPoolExecutor.map` a series of jobs to a list.
 
 Indices and tables
 ==================
