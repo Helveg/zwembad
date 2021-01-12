@@ -21,6 +21,10 @@ project = 'Zwembad'
 copyright = '2021, Robin De Schepper'
 author = 'Robin De Schepper'
 
+autodoc_mock_imports = [
+    "mpi4py"
+]
+
 
 # -- General configuration ---------------------------------------------------
 
