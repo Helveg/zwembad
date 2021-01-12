@@ -4,7 +4,10 @@ import atexit
 import sys
 import traceback
 import queue
+import dill
 from mpi4py import MPI
+
+MPI.pickle.__init__(dill.dumps, dill.loads)
 
 class _JobThread(threading.Thread):
     """
@@ -36,6 +39,10 @@ class _JobThread(threading.Thread):
 
 
 class MPIPoolExecutor(concurrent.futures.Executor):
+    """
+    MPI based Executor. Will use all available MPI processes to execute submissions to the
+    pool. The MPI process with rank 0 will continue while all other ranks halt and
+    """
     def __init__(self, master=0, comm=None):
         if comm is None:
             comm = MPI.COMM_WORLD
@@ -92,6 +99,15 @@ class MPIPoolExecutor(concurrent.futures.Executor):
         # Schedule the job to be executed on a worker
         self._schedule(job)
         return f
+
+    def map(self, fn, *iterables):
+        """
+        Submits jobs for as long as all ``iterables`` provide values and places the
+        results in a list. The iterables are consumed greedily.
+        """
+        # Submit all sets of parameters in the given iterables to the pool and collect
+        # the results in a list.
+        return [self.submit(fn, *args).result() for args in zip(*iterables)]
 
     def _schedule(self, job, handover=None):
         """
