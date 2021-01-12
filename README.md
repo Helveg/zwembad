@@ -1,3 +1,5 @@
+[![Documentation Status](https://readthedocs.org/projects/zwembad/badge/?version=latest)](https://zwembad.readthedocs.io/en/latest/?badge=latest)
+
 # About
 
 `zwembad` offers an `MPIPoolExecutor` class, an implementation of the
