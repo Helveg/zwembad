@@ -5,7 +5,7 @@ import sys
 
 from setuptools import find_packages, setup
 
-requires = ["schwimmbad", "mpi4py", "dill"]
+requires = ["mpi4py"]
 
 with open("zwembad/__init__.py", "r") as f:
     for line in f.readlines():
@@ -21,7 +21,7 @@ with open("README.md") as f:
 setup(
     name="zwembad",
     version=__version__,
-    description="MPI Pool similar to futures",
+    description="MPIPoolExecutor implementing the concurrent.futures interface",
     long_description=long_description,
     long_description_content_type="text/markdown",
     author="Uwe Schmitt",
