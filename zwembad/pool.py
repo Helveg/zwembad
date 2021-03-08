@@ -50,7 +50,7 @@ class MPIPoolExecutor(concurrent.futures.Executor):
         self._comm = comm
         self._master = master
         self._rank = self._comm.Get_rank()
-        self._queue = queue.SimpleQueue()
+        self._queue = queue.Queue()
 
         atexit.register(lambda: MPIPoolExecutor.shutdown(self))
 
