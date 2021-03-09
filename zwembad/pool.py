@@ -85,7 +85,7 @@ class MPIPoolExecutor(concurrent.futures.Executor):
             result = func(*args, **kwargs)
             self._comm.ssend(result, self._master)
 
-    def submit(self, fn, /, *args, **kwargs):
+    def submit(self, fn, *args, **kwargs):
         """
         Submit a task to the MPIPool. ``fn(*args, **kwargs)`` will be called on an MPI
         process meaning that all data must be communicable over the MPI communicator,
